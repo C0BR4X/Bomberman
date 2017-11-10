@@ -15,7 +15,7 @@ public class Bomb : MonoBehaviour
 		 * 								- secondly: the delay before it gets called.
 		 * In this case, you we to make the bomb explode in three seconds, so we call Explode()
 		 */
-		Invoke("Explode", 3f);	
+		Invoke("Explode", 5f);	
 	}
 	
 	// Update is called once per frame
@@ -29,6 +29,6 @@ public class Bomb : MonoBehaviour
         
         			GetComponent<MeshRenderer>().enabled = false; //2
         			transform.Find("Collider").gameObject.SetActive(false); //3
-        			Destroy(gameObject, .3f); //4
+        			Destroy(gameObject, .5f); //4
 	}
 }
