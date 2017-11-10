@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bomb : MonoBehaviour
 {
 	// adds explosion object
-	public GameObject ExplosionPrefab;
+	public GameObject explosionPrefab;
 
 	// Use this for initialization
 	void Start () {
@@ -20,9 +20,15 @@ public class Bomb : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-		void Explode() {
-			
-		}
+		Explode();
+	}
 
+	private void Explode()
+	{
+		Instantiate(explosionPrefab, transform.position, Quaternion.identity); //1
+        
+        			GetComponent<MeshRenderer>().enabled = false; //2
+        			transform.Find("Collider").gameObject.SetActive(false); //3
+        			Destroy(gameObject, .3f); //4
 	}
 }
