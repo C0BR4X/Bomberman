@@ -25,6 +25,12 @@ public class Bomb : MonoBehaviour
 
 	private void Explode()
 	{
+		/*
+		 * 1. Spawns an explosion at the bomb’s position.
+    	 * 2. Disables the mesh renderer, making the bomb invisible.
+    	 * 3. Disables the collider, allowing players to move through and walk into an explosion.
+    	 * 4. Destroys the bomb after 0.3 seconds; this ensures all explosions will spawn before the GameObject is destroyed.
+		 */
 		Instantiate(explosionPrefab, transform.position, Quaternion.identity); //1
         
         			GetComponent<MeshRenderer>().enabled = false; //2
