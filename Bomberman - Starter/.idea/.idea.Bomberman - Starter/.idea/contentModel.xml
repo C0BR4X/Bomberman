@@ -13,6 +13,7 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="Bomb.cs" t="Include" />
           <e p="DestroySelf.cs" t="Include" />
           <e p="DisableTriggerOnPlayerExit.cs" t="Include" />
           <e p="GlobalStateManager.cs" t="Include" />

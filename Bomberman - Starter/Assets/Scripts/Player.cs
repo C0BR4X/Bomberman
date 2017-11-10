@@ -143,7 +143,9 @@ public class Player : MonoBehaviour {
     /// </summary>
     private void DropBomb() {
         if (bombPrefab) { //Check if bomb prefab is assigned first
-            Instantiate(bombPrefab, myTransform.position, bombPrefab.transform.rotation);  
+            Instantiate(bombPrefab, new Vector3(Mathf.RoundToInt(myTransform.position.x), 
+                        bombPrefab.transform.position.y, Mathf.RoundToInt(myTransform.position.z)),
+                        bombPrefab.transform.rotation); 
         }
     }
 
