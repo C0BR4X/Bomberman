@@ -48,7 +48,7 @@ public class Player : MonoBehaviour {
         //Cache the attached components for better performance and less typing
         rigidBody = GetComponent<Rigidbody>();
         myTransform = transform;
-        animator = myTransform.FindChild("PlayerModel").GetComponent<Animator>();
+        animator = myTransform.Find("PlayerModel").GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -143,7 +143,7 @@ public class Player : MonoBehaviour {
     /// </summary>
     private void DropBomb() {
         if (bombPrefab) { //Check if bomb prefab is assigned first
-
+            Instantiate(bombPrefab, myTransform.position, bombPrefab.transform.rotation);  
         }
     }
 
