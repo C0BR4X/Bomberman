@@ -11,10 +11,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Player.cs" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Player.cs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/Player.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1993">
+            <state relative-caret-position="522">
               <caret line="147" column="24" lean-forward="false" selection-start-line="147" selection-start-column="24" selection-end-line="147" selection-end-column="24" />
               <folding>
                 <marker date="1510318742000" expanded="true" signature="0:1119" ph="/* Copyright (c) 2015 Razeware LLC ... */" />
@@ -50,19 +50,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Bomb.cs" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Bomb.cs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/Bomb.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="31" column="14" lean-forward="false" selection-start-line="31" selection-start-column="14" selection-end-line="31" selection-end-column="14" />
+            <state relative-caret-position="330">
+              <caret line="22" column="19" lean-forward="false" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
               <folding>
-                <marker date="1510320679000" expanded="true" signature="6:78" ph="..." />
-                <marker date="1510320679000" expanded="true" signature="113:1219" ph="{...}" />
-                <marker date="1510320679000" expanded="true" signature="226:508" ph="{...}" />
-                <marker date="1510320679000" expanded="true" signature="233:479" ph="/* Invoke() takes 2 parameters: - firstly: the name of the method you want to be called ... */" />
-                <marker date="1510320679000" expanded="true" signature="563:580" ph="{...}" />
-                <marker date="1510320679000" expanded="true" signature="605:1217" ph="{...}" />
-                <marker date="1510320679000" expanded="true" signature="611:955" ph="/* 1. Spawns an explosion at the bomb’s position. ... */" />
+                <marker date="1510328535000" expanded="true" signature="6:114" ph="..." />
+                <marker date="1510328535000" expanded="true" signature="149:1213" ph="{...}" />
+                <marker date="1510328535000" expanded="true" signature="262:544" ph="{...}" />
+                <marker date="1510328535000" expanded="true" signature="269:515" ph="/* Invoke() takes 2 parameters: - firstly: the name of the method you want to be called ... */" />
+                <marker date="1510328535000" expanded="true" signature="599:616" ph="{...}" />
+                <marker date="1510328535000" expanded="true" signature="643:1211" ph="{...}" />
+                <marker date="1510328535000" expanded="true" signature="646:985" ph="/* 1. Spawns an explosion at the bomb’s position. ... */" />
               </folding>
             </state>
           </provider>
@@ -171,12 +171,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1510317927861</updated>
-      <workItem from="1510317933162" duration="2151000" />
+      <workItem from="1510317933162" duration="3748000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2151000" />
+    <option name="totallyTimeSpent" value="3748000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -189,7 +189,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="20" y="43" width="1400" height="833" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Errors In Solution" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -224,9 +223,25 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Bomb.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="19" lean-forward="false" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
+          <folding>
+            <marker date="1510328535000" expanded="true" signature="6:114" ph="..." />
+            <marker date="1510328535000" expanded="true" signature="149:1213" ph="{...}" />
+            <marker date="1510328535000" expanded="true" signature="262:544" ph="{...}" />
+            <marker date="1510328535000" expanded="true" signature="269:515" ph="/* Invoke() takes 2 parameters: - firstly: the name of the method you want to be called ... */" />
+            <marker date="1510328535000" expanded="true" signature="599:616" ph="{...}" />
+            <marker date="1510328535000" expanded="true" signature="643:1211" ph="{...}" />
+            <marker date="1510328535000" expanded="true" signature="646:985" ph="/* 1. Spawns an explosion at the bomb’s position. ... */" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/Player.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1993">
+        <state relative-caret-position="522">
           <caret line="147" column="24" lean-forward="false" selection-start-line="147" selection-start-column="24" selection-end-line="147" selection-end-column="24" />
           <folding>
             <marker date="1510318742000" expanded="true" signature="0:1119" ph="/* Copyright (c) 2015 Razeware LLC ... */" />
@@ -257,22 +272,6 @@
             <marker date="1510318742000" expanded="true" signature="5798:6098" ph="{...}" />
             <marker date="1510318742000" expanded="true" signature="6153:6281" ph="{...}" />
             <marker date="1510318742000" expanded="true" signature="6198:6275" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Bomb.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="14" lean-forward="false" selection-start-line="31" selection-start-column="14" selection-end-line="31" selection-end-column="14" />
-          <folding>
-            <marker date="1510320679000" expanded="true" signature="6:78" ph="..." />
-            <marker date="1510320679000" expanded="true" signature="113:1219" ph="{...}" />
-            <marker date="1510320679000" expanded="true" signature="226:508" ph="{...}" />
-            <marker date="1510320679000" expanded="true" signature="233:479" ph="/* Invoke() takes 2 parameters: - firstly: the name of the method you want to be called ... */" />
-            <marker date="1510320679000" expanded="true" signature="563:580" ph="{...}" />
-            <marker date="1510320679000" expanded="true" signature="605:1217" ph="{...}" />
-            <marker date="1510320679000" expanded="true" signature="611:955" ph="/* 1. Spawns an explosion at the bomb’s position. ... */" />
           </folding>
         </state>
       </provider>
