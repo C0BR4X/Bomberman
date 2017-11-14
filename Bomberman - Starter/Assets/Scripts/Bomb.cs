@@ -21,7 +21,6 @@ public class Bomb : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-		Explode();
 	}
 	
 	private void Explode() {
