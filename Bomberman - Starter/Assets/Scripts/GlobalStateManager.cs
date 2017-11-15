@@ -24,6 +24,10 @@ using UnityEngine;
 using System.Collections;
 
 public class GlobalStateManager : MonoBehaviour {
+
+    private int deadPlayers = 0; // Amount of players that died
+    private int deadPlayerNumber = -1; // Is set once the first player dies, and it indicates which one it was
+    
     public void PlayerDied(int playerNumber) {
 
     }
