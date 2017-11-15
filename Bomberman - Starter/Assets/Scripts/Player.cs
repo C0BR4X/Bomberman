@@ -27,12 +27,14 @@ using System;
 public class Player : MonoBehaviour {
 
     //Player parameters
-    [Range(1, 2)] //Enables a nifty slider in the editor
-    public int playerNumber = 1; //Indicates what player this is: P1 or P2
+    public GlobalStateManager GlobalManager; // Reference to the GlobalStateManager, a script that is notified of all player deaths and determines which player won
+    [Range(1, 2)] // Enables a nifty slider in the editor
+    public int playerNumber = 1; // Indicates what player this is: P1 or P2
     public float moveSpeed = 5f;
-    public bool canDropBombs = true; //Can the player drop bombs?
-    public bool canMove = true; //Can the player move?
-
+    public bool canDropBombs = true; // Can the player drop bombs?
+    public bool canMove = true; // Can the player move?
+    public bool dead = false; // Is player dead ?
+    
     private int bombs = 2; //Amount of bombs the player has left to drop, gets decreased as the player drops a bomb, increases as an owned bomb explodes
 
     //Prefabs
@@ -150,8 +152,17 @@ public class Player : MonoBehaviour {
     }
 
     public void OnTriggerEnter(Collider other) {
+        
+        /*
+         * 1. Sets the dead variable so you can keep track of the player's death.
+         * 2. Notifies the global state manager that the player died.
+         * 3. Destroys the player GameObject.
+         */
         if (other.CompareTag("Explosion")) {
             Debug.Log("P" + playerNumber + " hit by explosion!");
+            dead = true; // 1
+            GlobalManager.PlayerDied(playerNumber); // 2
+            Destroy(gameObject); // 3
         }
     }
 }

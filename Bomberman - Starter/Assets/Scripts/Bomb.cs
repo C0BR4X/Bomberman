@@ -5,12 +5,10 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour
 {
-	// adds explosion object
-	public GameObject explosionPrefab;
-	// A LayerMask selectively filters out certain layers
-	public LayerMask levelMask;
-	// check the colliding object
-	private bool exploded = false;
+	
+	public GameObject explosionPrefab; // adds explosion object	
+	public LayerMask levelMask; // A LayerMask selectively filters out certain layers	
+	private bool exploded = false; // check the colliding object
 
 	// Use this for initialization
 	void Start () {
