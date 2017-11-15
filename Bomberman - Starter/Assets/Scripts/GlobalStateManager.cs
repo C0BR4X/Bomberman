@@ -28,7 +28,45 @@ public class GlobalStateManager : MonoBehaviour {
     private int deadPlayers = 0; // Amount of players that died
     private int deadPlayerNumber = -1; // Is set once the first player dies, and it indicates which one it was
     
+    
+    
+    /*
+     * 1. Adds one dead player.
+     * 2. If this is the first player that died...
+     * 3. It sets the dead player number to the player that died first.
+     * 4. Checks if the other player also died or if just one bit the dust after 0.3 seconds.
+     */
     public void PlayerDied(int playerNumber) {
+        deadPlayers++; // 1
 
+        if (deadPlayers == 1) { // 2
+            deadPlayerNumber = playerNumber; // 3
+            Invoke("CheckPlayersDeath", .3f); // 4
+        }
+
+    }
+
+    /*
+     * 1. A single player died and he's the loser.
+     * 2. Player 1 died so Player 2 is the winner.
+     * 3. Player 2 died so Player 1 is the winner.
+     * 4. Both players died, so it's a draw.
+     */
+    public void CheckPlayersDeath() {
+        
+        // 1
+        if (deadPlayers == 1) { 
+            // 2
+            if (deadPlayerNumber == 1) { 
+                Debug.Log("Player 2 is the winner!");
+                // 3
+            } else { 
+                Debug.Log("Player 1 is the winner!");
+            }
+            // 4
+        } else { 
+            Debug.Log("The game ended in a draw!");
+        }
+        
     }
 }
