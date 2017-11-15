@@ -86,19 +86,19 @@ public class Player : MonoBehaviour {
             animator.SetBool("Walking",true);
         }
 
-        if (Input.GetKey(KeyCode.A)) { //Left movement
+        if (unityInput.KeyPressed(KeyCode.A)) { //Left movement
             rigidBody.velocity = new Vector3(-moveSpeed, rigidBody.velocity.y, rigidBody.velocity.z);
             myTransform.rotation = Quaternion.Euler(0, 270, 0);
             animator.SetBool("Walking", true);
         }
 
-        if (Input.GetKey(KeyCode.S)) { //Down movement
+        if (unityInput.KeyPressed(KeyCode.S)) { //Down movement
             rigidBody.velocity = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y, -moveSpeed);
             myTransform.rotation = Quaternion.Euler(0, 180, 0);
             animator.SetBool("Walking", true);
         }
 
-        if (Input.GetKey(KeyCode.D)) { //Right movement
+        if (unityInput.KeyPressed(KeyCode.D)) { //Right movement
             rigidBody.velocity = new Vector3(moveSpeed, rigidBody.velocity.y, rigidBody.velocity.z);
             myTransform.rotation = Quaternion.Euler(0, 90, 0);
             animator.SetBool("Walking", true);

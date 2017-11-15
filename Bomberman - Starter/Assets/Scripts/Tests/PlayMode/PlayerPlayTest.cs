@@ -20,21 +20,71 @@ public class PlayerPlayTest {
         
     }
 
+    [TearDown]
+    public void TearDown()
+    {
+        GameObject.DestroyImmediate(playerGameObject);
+        player = null;
+    }
+
     [UnityTest]
     public IEnumerator MoveUpOnW()
     {
         yield return null;
 
         unityInput.KeyPressed(KeyCode.W).Returns(true);
-        unityInput.KeyPressed(KeyCode.UpArrow).Returns(true);
         player.Contruct(unityInput);
 
         Assert.AreEqual(new Vector3(0, 0, 0), player.GetComponent<Rigidbody>().velocity);
+
         yield return null;
 
-        Rigidbody dini = playerGameObject.GetComponent<Rigidbody>();
-
         Assert.AreEqual(new Vector3(0, 0, player.moveSpeed), playerGameObject.GetComponent<Rigidbody>().velocity);
+    }
+
+    [UnityTest]
+    public IEnumerator MoveRightOnD()
+    {
+        yield return null;
+
+        unityInput.KeyPressed(KeyCode.D).Returns(true);
+        player.Contruct(unityInput);
+
+        Assert.AreEqual(new Vector3(0, 0, 0), player.GetComponent<Rigidbody>().velocity);
+
+        yield return null;
+
+        Assert.AreEqual(new Vector3(player.moveSpeed, 0, 0), playerGameObject.GetComponent<Rigidbody>().velocity);
+    }
+
+    [UnityTest]
+    public IEnumerator MoveLeftOnA()
+    {
+        yield return null;
+
+        unityInput.KeyPressed(KeyCode.A).Returns(true);
+        player.Contruct(unityInput);
+
+        Assert.AreEqual(new Vector3(0, 0, 0), player.GetComponent<Rigidbody>().velocity);
+
+        yield return null;
+
+        Assert.AreEqual(new Vector3(-player.moveSpeed, 0, 0), playerGameObject.GetComponent<Rigidbody>().velocity);
+    }
+
+    [UnityTest]
+    public IEnumerator MoveDownOnS()
+    {
+        yield return null;
+
+        unityInput.KeyPressed(KeyCode.S).Returns(true);
+        player.Contruct(unityInput);
+
+        Assert.AreEqual(new Vector3(0, 0, 0), player.GetComponent<Rigidbody>().velocity);
+
+        yield return null;
+
+        Assert.AreEqual(new Vector3(0, 0, -player.moveSpeed), playerGameObject.GetComponent<Rigidbody>().velocity);
     }
 
     // A UnityTest behaves like a coroutine in PlayMode
