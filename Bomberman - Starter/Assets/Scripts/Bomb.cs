@@ -8,6 +8,7 @@ public class Bomb : MonoBehaviour
 	
 	public GameObject explosionPrefab; // adds explosion object	
 	public LayerMask levelMask; // A LayerMask selectively filters out certain layers	
+    public LayerMask boxMask;
 	private bool exploded = false; // check the colliding object
     private Player player;
 
@@ -68,10 +69,21 @@ public class Bomb : MonoBehaviour
 			//3
 			Physics.Raycast(transform.position + new Vector3(0,.5f,0), direction, out hit, i, levelMask); 
 			//4
-			if (!hit.collider) { 
+			if (!hit.collider)
+			{
+
+			    RaycastHit boxHit;
+
+			    Physics.Raycast(transform.position + new Vector3(0, .5f, 0), direction, out boxHit, i, boxMask);
+
 				Instantiate(explosionPrefab, transform.position + (i * direction),
 					//5 
-					explosionPrefab.transform.rotation); 
+					explosionPrefab.transform.rotation);
+
+			    if (boxHit.collider)
+			    {
+                    break;
+                }
 			//6
 			} else { 
 				//7
