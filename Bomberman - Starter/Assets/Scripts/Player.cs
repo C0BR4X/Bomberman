@@ -104,7 +104,7 @@ public class Player : MonoBehaviour {
             animator.SetBool("Walking", true);
         }
 
-        if (canDropBombs && Input.GetKeyDown(KeyCode.Space)) { //Drop bomb
+        if (canDropBombs && unityInput.KeyDown(KeyCode.Space)) { //Drop bomb
             DropBomb();
         }
     }
@@ -119,19 +119,19 @@ public class Player : MonoBehaviour {
             animator.SetBool("Walking", true);
         }
 
-        if (Input.GetKey(KeyCode.LeftArrow)) { //Left movement
+        if (unityInput.KeyPressed(KeyCode.LeftArrow)) { //Left movement
             rigidBody.velocity = new Vector3(-moveSpeed, rigidBody.velocity.y, rigidBody.velocity.z);
             myTransform.rotation = Quaternion.Euler(0, 270, 0);
             animator.SetBool("Walking", true);
         }
 
-        if (Input.GetKey(KeyCode.DownArrow)) { //Down movement
+        if (unityInput.KeyPressed(KeyCode.DownArrow)) { //Down movement
             rigidBody.velocity = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y, -moveSpeed);
             myTransform.rotation = Quaternion.Euler(0, 180, 0);
             animator.SetBool("Walking", true);
         }
 
-        if (Input.GetKey(KeyCode.RightArrow)) { //Right movement
+        if (unityInput.KeyPressed(KeyCode.RightArrow)) { //Right movement
             rigidBody.velocity = new Vector3(moveSpeed, rigidBody.velocity.y, rigidBody.velocity.z);
             myTransform.rotation = Quaternion.Euler(0, 90, 0);
             animator.SetBool("Walking", true);
@@ -146,10 +146,12 @@ public class Player : MonoBehaviour {
     /// Drops a bomb beneath the player
     /// </summary>
     private void DropBomb() {
-        if (bombPrefab) { //Check if bomb prefab is assigned first
-            Instantiate(bombPrefab, new Vector3(Mathf.RoundToInt(myTransform.position.x), 
+        if (bombPrefab && bombs > 0) { //Check if bomb prefab is assigned first
+            var droppedBomb = Instantiate(bombPrefab, new Vector3(Mathf.RoundToInt(myTransform.position.x), 
                         bombPrefab.transform.position.y, Mathf.RoundToInt(myTransform.position.z)),
-                        bombPrefab.transform.rotation); 
+                        bombPrefab.transform.rotation).GetComponent<Bomb>();
+            droppedBomb.SetPlayer(this);
+            bombs--;
         }
     }
 
@@ -171,5 +173,10 @@ public class Player : MonoBehaviour {
     public void Contruct(IUnityInput unityInput)
     {
         this.unityInput = unityInput;
+    }
+
+    public void IncreaseBombAmount()
+    {
+        bombs++;
     }
 }

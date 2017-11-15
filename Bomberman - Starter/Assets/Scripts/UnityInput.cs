@@ -7,4 +7,8 @@ public class UnityInput : IUnityInput
         return (Input.GetKey(keyCode));
     }
 
+    public bool KeyDown(KeyCode keyCode)
+    {
+        return Input.GetKeyDown(keyCode);
+    }
 }

@@ -9,6 +9,7 @@ public class Bomb : MonoBehaviour
 	public GameObject explosionPrefab; // adds explosion object	
 	public LayerMask levelMask; // A LayerMask selectively filters out certain layers	
 	private bool exploded = false; // check the colliding object
+    private Player player;
 
 	// Use this for initialization
 	void Start () {
@@ -38,6 +39,7 @@ public class Bomb : MonoBehaviour
 		StartCoroutine(CreateExplosions(Vector3.left)); 
 		GetComponent<MeshRenderer>().enabled = false; //2
 		exploded = true;
+	    player.IncreaseBombAmount();
 		transform.Find("Collider").gameObject.SetActive(false); //3
 		Destroy(gameObject, .3f); //4
 	}
@@ -95,5 +97,10 @@ public class Bomb : MonoBehaviour
 			Explode(); // 4
 		}
 	}
+
+    public void SetPlayer(Player player)
+    {
+        this.player = player;
+    }
 }
 

@@ -87,6 +87,22 @@ public class PlayerPlayTest {
         Assert.AreEqual(new Vector3(0, 0, -player.moveSpeed), playerGameObject.GetComponent<Rigidbody>().velocity);
     }
 
+    [UnityTest]
+    public IEnumerator CanDropBombDropBomb()
+    {
+        yield return null;
+
+        unityInput.KeyDown(KeyCode.Space).Returns(true);
+        player.Contruct(unityInput);
+
+        Assert.AreEqual(GameObject.FindObjectsOfType<Bomb>().Length, 0);
+
+        yield return null;
+
+        Assert.AreEqual(GameObject.FindObjectsOfType<Bomb>().Length, 1);
+
+    }
+
     // A UnityTest behaves like a coroutine in PlayMode
     // and allows you to yield null to skip a frame in EditMode
     [UnityTest]
