@@ -34,6 +34,7 @@ public class Player : MonoBehaviour {
     public bool canMove = true; //Can the player move?
 
     private int bombs = 2; //Amount of bombs the player has left to drop, gets decreased as the player drops a bomb, increases as an owned bomb explodes
+    private IUnityInput unityInput = new UnityInput();
 
     //Prefabs
     public GameObject bombPrefab;
@@ -49,6 +50,7 @@ public class Player : MonoBehaviour {
         rigidBody = GetComponent<Rigidbody>();
         myTransform = transform;
         animator = myTransform.Find("PlayerModel").GetComponent<Animator>();
+        unityInput = new UnityInput();
     }
 
     // Update is called once per frame
@@ -76,7 +78,7 @@ public class Player : MonoBehaviour {
     /// Updates Player 1's movement and facing rotation using the WASD keys and drops bombs using Space
     /// </summary>
     private void UpdatePlayer1Movement() {
-        if (Input.GetKey(KeyCode.W)) { //Up movement
+        if (unityInput.KeyPressed(KeyCode.W)) { //Up movement
             rigidBody.velocity = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y, moveSpeed);
             myTransform.rotation = Quaternion.Euler(0, 0, 0);
             animator.SetBool("Walking",true);
@@ -109,7 +111,7 @@ public class Player : MonoBehaviour {
     /// Updates Player 2's movement and facing rotation using the arrow keys and drops bombs using Enter or Return
     /// </summary>
     private void UpdatePlayer2Movement() {
-        if (Input.GetKey(KeyCode.UpArrow)) { //Up movement
+        if (unityInput.KeyPressed(KeyCode.UpArrow)) { //Up movement
             rigidBody.velocity = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y, moveSpeed);
             myTransform.rotation = Quaternion.Euler(0, 0, 0);
             animator.SetBool("Walking", true);
@@ -154,4 +156,13 @@ public class Player : MonoBehaviour {
             Debug.Log("P" + playerNumber + " hit by explosion!");
         }
     }
+}
+
+internal class UnityInput : IUnityInput
+{
+    public bool KeyPressed(KeyCode keyCode)
+    {
+        return (Input.GetKey(keyCode));
+    }
+
 }
