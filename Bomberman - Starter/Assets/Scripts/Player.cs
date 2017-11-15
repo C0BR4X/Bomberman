@@ -36,7 +36,7 @@ public class Player : MonoBehaviour {
     public bool dead = false; // Is player dead ?
     
     private int bombs = 2; //Amount of bombs the player has left to drop, gets decreased as the player drops a bomb, increases as an owned bomb explodes
-    private IUnityInput unityInput = new UnityInput();
+    private IUnityInput unityInput;
 
     //Prefabs
     public GameObject bombPrefab;
@@ -172,13 +172,4 @@ public class Player : MonoBehaviour {
     {
         this.unityInput = unityInput;
     }
-}
-
-internal class UnityInput : IUnityInput
-{
-    public bool KeyPressed(KeyCode keyCode)
-    {
-        return (Input.GetKey(keyCode));
-    }
-
 }
