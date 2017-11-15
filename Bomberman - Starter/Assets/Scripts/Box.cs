@@ -25,7 +25,7 @@ public class Box : MonoBehaviour {
 		 * 1. Sets the exploded variable
 		 * 2. Destroys the player GameObject.
 		 */
-		if (exploded && other.CompareTag("Explosion")) {
+		if (other.CompareTag("Explosion")) {
 			exploded = true; // 1
 			Destroy(gameObject); // 2
 		}
