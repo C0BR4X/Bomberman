@@ -167,6 +167,11 @@ public class Player : MonoBehaviour {
             Destroy(gameObject); // 3
         }
     }
+
+    public void Contruct(IUnityInput unityInput)
+    {
+        this.unityInput = unityInput;
+    }
 }
 
 internal class UnityInput : IUnityInput
