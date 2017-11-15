@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Box : MonoBehaviour {
 
-	private bool exploded = false; // Is box exploded
+	private bool exploded = false; // Has box exploded ?
 	private Rigidbody rigidBody;
 	private Transform myTransform;
 	
@@ -25,7 +25,7 @@ public class Box : MonoBehaviour {
 		 * 1. Sets the exploded variable
 		 * 2. Destroys the player GameObject.
 		 */
-		if (other.CompareTag("Explosion")) {
+		if (exploded && other.CompareTag("Explosion")) {
 			exploded = true; // 1
 			Destroy(gameObject); // 2
 		}
