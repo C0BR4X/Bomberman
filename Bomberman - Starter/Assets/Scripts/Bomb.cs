@@ -71,18 +71,18 @@ public class Bomb : MonoBehaviour
 			//4
 			if (!hit.collider)
 			{
+			    Instantiate(explosionPrefab, transform.position + (i * direction),
+			        //5 
+			        explosionPrefab.transform.rotation);
 
-			    RaycastHit boxHit;
+                RaycastHit boxHit;
 
 			    Physics.Raycast(transform.position + new Vector3(0, .5f, 0), direction, out boxHit, i, boxMask);
 
-				Instantiate(explosionPrefab, transform.position + (i * direction),
-					//5 
-					explosionPrefab.transform.rotation);
 
 			    if (boxHit.collider)
 			    {
-                    break;
+                    break; //Prevents the explosion from going "through" the boxes
                 }
 			//6
 			} else { 

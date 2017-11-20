@@ -168,6 +168,12 @@ public class Player : MonoBehaviour {
             GlobalManager.PlayerDied(playerNumber); // 2
             Destroy(gameObject); // 3
         }
+
+        if (other.CompareTag("BombItem"))
+        {
+            bombs++;
+            Destroy(other.gameObject);
+        }
     }
 
     public void Contruct(IUnityInput unityInput)
