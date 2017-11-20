@@ -1,20 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.Remoting.Lifetime;
 using UnityEngine;
 
-public class Heart : MonoBehaviour {
-	
+public class DamageItem : MonoBehaviour {
+
 	// Use this for initialization
-	void Start () {}
-	
+	void Start() {}
+
 	// Update is called once per frame
 	void Update () {}
-
+	
 	public void OnTriggerEnter(Collider other) {
 		if (other.CompareTag("Player")) {
 			var player = other.GetComponent<Player>();
-			player.life++;
+			player.explosionRange++;
 			Destroy(this.gameObject);
 		}
 	}
