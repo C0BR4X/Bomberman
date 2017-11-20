@@ -48,6 +48,7 @@ public class Player : MonoBehaviour {
     private Animator animator;
 
     private bool carryFlag = false;
+    private GameObject flag;
 
     // Use this for initialization
     void Start() {
@@ -61,6 +62,11 @@ public class Player : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         UpdateMovement();
+
+        if (carryFlag)
+        {
+            flag.transform.position = transform.position - new Vector3(0.4f, 0, 0);
+        }
     }
 
     private void UpdateMovement() {
@@ -196,6 +202,7 @@ public class Player : MonoBehaviour {
             if (other.CompareTag("Blue Flag"))
             {
                 carryFlag = true;
+                flag = other.gameObject;
             }
 
             if (other.CompareTag("Red Flag") && carryFlag)
@@ -216,6 +223,7 @@ public class Player : MonoBehaviour {
             if (other.CompareTag("Red Flag"))
             {
                 carryFlag = true;
+
             }
         }
     }
