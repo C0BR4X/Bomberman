@@ -47,6 +47,8 @@ public class Player : MonoBehaviour {
     private Transform myTransform;
     private Animator animator;
 
+    private bool carryFlag = false;
+
     // Use this for initialization
     void Start() {
         //Cache the attached components for better performance and less typing
@@ -187,6 +189,34 @@ public class Player : MonoBehaviour {
         {
             bombRange += 1;
             Destroy(other.gameObject);
+        }
+
+        if (playerNumber == 1)
+        {
+            if (other.CompareTag("Blue Flag"))
+            {
+                carryFlag = true;
+            }
+
+            if (other.CompareTag("Red Flag") && carryFlag)
+            {
+                GlobalManager.redScoresCTF();
+                carryFlag = false;
+            }
+        }
+
+        if (playerNumber == 2)
+        {
+            if (other.CompareTag("Blue Flag") && carryFlag)
+            {
+                GlobalManager.redScoresCTF();
+                carryFlag = false;
+            }
+
+            if (other.CompareTag("Red Flag"))
+            {
+                carryFlag = true;
+            }
         }
     }
 

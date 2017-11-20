@@ -27,9 +27,9 @@ public class GlobalStateManager : MonoBehaviour {
 
     private int deadPlayers = 0; // Amount of players that died
     private int deadPlayerNumber = -1; // Is set once the first player dies, and it indicates which one it was
-    
-    
-    
+    [SerializeField]private int redTeamScore =0;
+
+
     /*
      * 1. Adds one dead player.
      * 2. If this is the first player that died...
@@ -68,5 +68,10 @@ public class GlobalStateManager : MonoBehaviour {
             Debug.Log("The game ended in a draw!");
         }
         
+    }
+
+    public void redScoresCTF()
+    {
+        redTeamScore++;
     }
 }
