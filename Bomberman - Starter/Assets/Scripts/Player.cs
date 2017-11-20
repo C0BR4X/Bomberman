@@ -48,7 +48,8 @@ public class Player : MonoBehaviour {
     private Transform myTransform;
     public  Animator animator; //Maybe other solution than public
 
-    private bool carryFlag = false;
+    public bool carryFlag = false;
+    private GameObject flag;
 
     // Use this for initialization
     void Start() {
@@ -62,6 +63,11 @@ public class Player : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         UpdateMovement();
+
+        if (carryFlag)
+        {
+            flag.transform.position = transform.position - new Vector3(0.4f, 0, 0);
+        }
     }
 
     private void UpdateMovement() {
@@ -175,34 +181,6 @@ public class Player : MonoBehaviour {
             }
             life--;
         }
-
-        if (playerNumber == 1)
-        {
-            if (other.CompareTag("Blue Flag"))
-            {
-                carryFlag = true;
-            }
-
-            if (other.CompareTag("Red Flag") && carryFlag)
-            {
-                GlobalManager.redScoresCTF();
-                carryFlag = false;
-            }
-        }
-
-        if (playerNumber == 2)
-        {
-            if (other.CompareTag("Blue Flag") && carryFlag)
-            {
-                GlobalManager.redScoresCTF();
-                carryFlag = false;
-            }
-
-            if (other.CompareTag("Red Flag"))
-            {
-                carryFlag = true;
-            }
-        }
     }
 
     //for testing purposes
@@ -214,5 +192,21 @@ public class Player : MonoBehaviour {
     public void IncreaseBombAmount()
     {
         bombs++;
+    }
+
+    public void TakeFlag(Flag flag)
+    {
+        carryFlag = true;
+        this.flag = flag.gameObject;
+    }
+
+    public void DeliveredFlag()
+    {
+        carryFlag = false;
+        Flag flag = this.flag.GetComponent<Flag>();
+        flag.Dropped();
+        flag.GoHome();
+        this.flag = null;
+        GlobalManager.Scored(playerNumber);
     }
 }
