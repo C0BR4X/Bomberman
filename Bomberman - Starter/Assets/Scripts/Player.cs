@@ -38,7 +38,8 @@ public class Player : MonoBehaviour {
     private int bombs = 2; //Amount of bombs the player has left to drop, gets decreased as the player drops a bomb, increases as an owned bomb explodes
     private int bombRange = 3; //Range of the bombs dropped by this player
     private IUnityInput unityInput;
-
+    public int life = 2; //Max amount of life one player has
+    
     //Prefabs
     public GameObject bombPrefab;
 
@@ -167,9 +168,12 @@ public class Player : MonoBehaviour {
          */
         if (other.CompareTag("Explosion")) {
             Debug.Log("P" + playerNumber + " hit by explosion!");
-            dead = true; // 1
-            GlobalManager.PlayerDied(playerNumber); // 2
-            Destroy(gameObject); // 3
+            if(life == 1) {
+                dead = true; // 1
+                Destroy(gameObject); // 3
+                GlobalManager.PlayerDied(playerNumber); // 2
+            }
+            life--;
         }
 
         if (other.CompareTag("BombItem"))
