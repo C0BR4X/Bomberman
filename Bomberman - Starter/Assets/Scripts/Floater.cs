@@ -5,7 +5,7 @@ using UnityEngine;
 public class Floater : MonoBehaviour
 {
 
-    [SerializeField] private float amplitude = 0.5f;
+    [SerializeField] private float amplitude = 0.003f;
 
     [SerializeField] private float frequency = 1;
 

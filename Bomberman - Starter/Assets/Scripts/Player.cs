@@ -35,10 +35,10 @@ public class Player : MonoBehaviour {
     public bool canMove = true; // Can the player move?
     public bool dead = false; // Is player dead ?
     
-    private int bombs = 2; //Amount of bombs the player has left to drop, gets decreased as the player drops a bomb, increases as an owned bomb explodes
-    private int bombRange = 3; //Range of the bombs dropped by this player
+    public int bombs = 2; //Amount of bombs the player has left to drop, gets decreased as the player drops a bomb, increases as an owned bomb explodes (maybe find better solution than public)
+    public int explosionRange = 3; //Range of the bombs dropped by this player (maybe find better solution than public)
     private IUnityInput unityInput;
-    public int life = 2; //Max amount of life one player has
+    public int life = 2; //Amount of life one player has (maybe find better solution than public)
     
     //Prefabs
     public GameObject bombPrefab;
@@ -46,7 +46,7 @@ public class Player : MonoBehaviour {
     //Cached components
     private Rigidbody rigidBody;
     private Transform myTransform;
-    private Animator animator;
+    public  Animator animator; //Maybe other solution than public
 
     public bool carryFlag = false;
     private GameObject flag;
@@ -160,7 +160,7 @@ public class Player : MonoBehaviour {
             var droppedBomb = Instantiate(bombPrefab, new Vector3(Mathf.RoundToInt(myTransform.position.x), 
                         bombPrefab.transform.position.y, Mathf.RoundToInt(myTransform.position.z)),
                         bombPrefab.transform.rotation).GetComponent<Bomb>();
-            droppedBomb.SetPlayerProperties(this, bombRange);
+            droppedBomb.SetPlayerProperties(this, explosionRange);
             bombs--;
         }
     }
@@ -182,25 +182,7 @@ public class Player : MonoBehaviour {
             life--;
         }
 
-        if (other.CompareTag("BombItem"))
-        {
-            bombs++;
-            Destroy(other.gameObject);
-        }
-
-        if (other.CompareTag("SpeedItem"))
-        {
-            moveSpeed += 2f;
-            animator.speed += 1f;
-            Destroy(other.gameObject);
-        }
-
-        if (other.CompareTag("DamageItem"))
-        {
-            bombRange += 1;
-            Destroy(other.gameObject);
-        }
-
+         
     }
 
     //for testing purposes
