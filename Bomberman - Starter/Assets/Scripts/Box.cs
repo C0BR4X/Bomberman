@@ -23,11 +23,14 @@ public class Box : MonoBehaviour {
         
 		/*
 		 * 1. Sets the exploded variable
-		 * 2. Destroys the player GameObject.
+         * 2. Notifies the Itemspawner that it got destroyed
+		 * 3. Destroys the player GameObject.
 		 */
 		if (other.CompareTag("Explosion")) {
 			exploded = true; // 1
-			Destroy(gameObject); // 2
+		    ItemSpawner itemSpawner = FindObjectOfType<ItemSpawner>();
+		    itemSpawner.BoxDestroyed(this); //2
+            Destroy(gameObject); // 3
 		}
 	}
 	
