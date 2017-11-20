@@ -176,7 +176,7 @@ public class Player : MonoBehaviour {
             life--;
         }
 
-         if (playerNumber == 1)
+        if (playerNumber == 1)
         {
             if (other.CompareTag("Blue Flag"))
             {
