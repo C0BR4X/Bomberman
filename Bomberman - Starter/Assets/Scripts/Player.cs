@@ -174,8 +174,16 @@ public class Player : MonoBehaviour {
             bombs++;
             Destroy(other.gameObject);
         }
+
+        if (other.CompareTag("SpeedItem"))
+        {
+            moveSpeed += 2f;
+            animator.speed += 1f;
+            Destroy(other.gameObject);
+        }
     }
 
+    //for testing purposes
     public void Contruct(IUnityInput unityInput)
     {
         this.unityInput = unityInput;
