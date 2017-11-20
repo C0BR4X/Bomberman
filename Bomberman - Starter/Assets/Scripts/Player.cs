@@ -36,6 +36,7 @@ public class Player : MonoBehaviour {
     public bool dead = false; // Is player dead ?
     
     private int bombs = 2; //Amount of bombs the player has left to drop, gets decreased as the player drops a bomb, increases as an owned bomb explodes
+    private int bombRange = 3; //Range of the bombs dropped by this player
     private IUnityInput unityInput;
 
     //Prefabs
@@ -150,7 +151,7 @@ public class Player : MonoBehaviour {
             var droppedBomb = Instantiate(bombPrefab, new Vector3(Mathf.RoundToInt(myTransform.position.x), 
                         bombPrefab.transform.position.y, Mathf.RoundToInt(myTransform.position.z)),
                         bombPrefab.transform.rotation).GetComponent<Bomb>();
-            droppedBomb.SetPlayer(this);
+            droppedBomb.SetPlayerProperties(this, bombRange);
             bombs--;
         }
     }
@@ -179,6 +180,12 @@ public class Player : MonoBehaviour {
         {
             moveSpeed += 2f;
             animator.speed += 1f;
+            Destroy(other.gameObject);
+        }
+
+        if (other.CompareTag("DamageItem"))
+        {
+            bombRange += 1;
             Destroy(other.gameObject);
         }
     }

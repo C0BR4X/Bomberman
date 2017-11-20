@@ -11,9 +11,10 @@ public class Bomb : MonoBehaviour
     public LayerMask boxMask;
 	private bool exploded = false; // check the colliding object
     private Player player;
+    private int explosionRange = 3;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		
 		/*
 		 * Invoke() takes 2 parameters: - firstly: the name of the method you want to be called
@@ -61,9 +62,10 @@ public class Bomb : MonoBehaviour
 	 * 8. Waits for 0.05 seconds before doing the next iteration of the for loop.
 	 * 	  This makes the explosion more convincing by making it look like it's expanding outwards.
 	 */
-	private IEnumerator CreateExplosions(Vector3 direction) {
-		//1
-		for (int i = 1; i < 3; i++) { 
+	private IEnumerator CreateExplosions(Vector3 direction)
+	{
+	    //1
+	    for (int i = 1; i < explosionRange; i++) { 
 			//2
 			RaycastHit hit; 
 			//3
@@ -110,9 +112,10 @@ public class Bomb : MonoBehaviour
 		}
 	}
 
-    public void SetPlayer(Player player)
+    public void SetPlayerProperties(Player player, int range)
     {
         this.player = player;
+        this.explosionRange = range;
     }
 }
 
