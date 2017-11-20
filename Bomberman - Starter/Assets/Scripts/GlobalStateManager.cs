@@ -28,6 +28,7 @@ public class GlobalStateManager : MonoBehaviour {
     private int deadPlayers = 0; // Amount of players that died
     private int deadPlayerNumber = -1; // Is set once the first player dies, and it indicates which one it was
     [SerializeField]private int redTeamScore =0;
+    private int blueTeamScore= 0;
 
 
     /*
@@ -73,5 +74,17 @@ public class GlobalStateManager : MonoBehaviour {
     public void redScoresCTF()
     {
         redTeamScore++;
+    }
+
+    public void Scored(int teamNumber)
+    {
+        if (teamNumber == 1)
+        {
+            redTeamScore++;
+        }
+        else
+        {
+            blueTeamScore++;
+        }
     }
 }
