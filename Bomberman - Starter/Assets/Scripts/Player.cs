@@ -48,9 +48,7 @@ public class Player : MonoBehaviour {
     private Transform myTransform;
     public  Animator animator; //Maybe other solution than public
 
-    public bool carryFlag = false;
-    private GameObject flag;
-
+   
     // Use this for initialization
     void Start() {
         //Cache the attached components for better performance and less typing
@@ -64,13 +62,9 @@ public class Player : MonoBehaviour {
     void Update() {
         UpdateMovement();
 
-        if (carryFlag)
-        {
-            flag.transform.position = transform.position - new Vector3(0.4f, 0, 0);
-        }
     }
 
-    private void UpdateMovement() {
+    protected void UpdateMovement() {
         animator.SetBool("Walking", false);
 
         if (!canMove) { //Return if player can't move
@@ -177,12 +171,7 @@ public class Player : MonoBehaviour {
         }
     }
 
-    private void DropFlag()
-    {
-        Flag flag = this.flag.GetComponent<Flag>();
-        flag.Dropped();
-        this.flag = null;
-    }
+    
 
     //for testing purposes
     public void Contruct(IUnityInput unityInput)
@@ -195,23 +184,7 @@ public class Player : MonoBehaviour {
         bombs++;
     }
 
-    public void TakeFlag(Flag flag)
-    {
-        carryFlag = true;
-        this.flag = flag.gameObject;
-    }
-
-    public void DeliveredFlag()
-    {
-        carryFlag = false;
-        Flag flag = this.flag.GetComponent<Flag>();
-
-        flag.Dropped();
-        flag.GoHome();
-        this.flag = null;
-
-        GlobalManager.Scored(playerNumber);
-    }
+    
 
     public void gotHit()
     {
@@ -221,7 +194,6 @@ public class Player : MonoBehaviour {
             dead = true; // 1
             Destroy(gameObject); // 3
             GlobalManager.PlayerDied(playerNumber); // 2
-            DropFlag();
         }
         life--;
     }

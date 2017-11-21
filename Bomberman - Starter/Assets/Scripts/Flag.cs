@@ -6,7 +6,7 @@ public class Flag : MonoBehaviour
 {
 
     [SerializeField] [Range(1, 2)] private int team; //1 for red, 2 for blue
-    private Player player;
+    private CTFPlayer player;
     private bool taken;
     private bool home;
 
@@ -31,7 +31,7 @@ public class Flag : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            player = other.GetComponent<Player>();
+            player = other.GetComponent<CTFPlayer>();
 
             if (player.playerNumber != team && !taken && home)
             {
