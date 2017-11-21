@@ -173,14 +173,7 @@ public class Player : MonoBehaviour {
          * 3. Destroys the player GameObject.
          */
         if (other.CompareTag("Explosion")) {
-            Debug.Log("P" + playerNumber + " hit by explosion!");
-            if(life == 1) {
-                dead = true; // 1
-                Destroy(gameObject); // 3
-                GlobalManager.PlayerDied(playerNumber); // 2
-                DropFlag();
-            }
-            life--;
+            
         }
     }
 
@@ -218,5 +211,18 @@ public class Player : MonoBehaviour {
         this.flag = null;
 
         GlobalManager.Scored(playerNumber);
+    }
+
+    public void gotHit()
+    {
+        Debug.Log("P" + playerNumber + " hit by explosion!");
+        if (life == 1)
+        {
+            dead = true; // 1
+            Destroy(gameObject); // 3
+            GlobalManager.PlayerDied(playerNumber); // 2
+            DropFlag();
+        }
+        life--;
     }
 }
