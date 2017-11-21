@@ -178,9 +178,17 @@ public class Player : MonoBehaviour {
                 dead = true; // 1
                 Destroy(gameObject); // 3
                 GlobalManager.PlayerDied(playerNumber); // 2
+                DropFlag();
             }
             life--;
         }
+    }
+
+    private void DropFlag()
+    {
+        Flag flag = this.flag.GetComponent<Flag>();
+        flag.Dropped();
+        this.flag = null;
     }
 
     //for testing purposes
@@ -204,9 +212,11 @@ public class Player : MonoBehaviour {
     {
         carryFlag = false;
         Flag flag = this.flag.GetComponent<Flag>();
+
         flag.Dropped();
         flag.GoHome();
         this.flag = null;
+
         GlobalManager.Scored(playerNumber);
     }
 }
