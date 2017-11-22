@@ -49,9 +49,7 @@ public class Player : MonoBehaviour {
     private Transform myTransform;
     public  Animator animator; //Maybe other solution than public
 
-    public bool carryFlag = false;
-    private GameObject flag;
-
+   
     // Use this for initialization
     void Start() {
         //Cache the attached components for better performance and less typing
@@ -65,13 +63,9 @@ public class Player : MonoBehaviour {
     void Update() {
         UpdateMovement();
 
-        if (carryFlag)
-        {
-            flag.transform.position = transform.position - new Vector3(0.4f, 0, 0);
-        }
     }
 
-    private void UpdateMovement() {
+    protected void UpdateMovement() {
         animator.SetBool("Walking", false);
 
         if (!canMove) { //Return if player can't move
@@ -174,15 +168,11 @@ public class Player : MonoBehaviour {
          * 3. Destroys the player GameObject.
          */
         if (other.CompareTag("Explosion")) {
-            Debug.Log("P" + playerNumber + " hit by explosion!");
-            if(life == 1) {
-                dead = true; // 1
-                Destroy(gameObject); // 3
-                GlobalManager.PlayerDied(playerNumber); // 2
-            }
-            life--;
+            
         }
     }
+
+    
 
     //for testing purposes
     public void Contruct(IUnityInput unityInput)
@@ -195,20 +185,18 @@ public class Player : MonoBehaviour {
         bombs++;
     }
 
-    public void TakeFlag(Flag flag)
-    {
-        carryFlag = true;
-        this.flag = flag.gameObject;
-    }
+    
 
-    public void DeliveredFlag()
+    public void gotHit()
     {
-        carryFlag = false;
-        Flag flag = this.flag.GetComponent<Flag>();
-        flag.Dropped();
-        flag.GoHome();
-        this.flag = null;
-        GlobalManager.Scored(playerNumber);
+        Debug.Log("P" + playerNumber + " hit by explosion!");
+        if (life == 1)
+        {
+            dead = true; // 1
+            Destroy(gameObject); // 3
+            GlobalManager.PlayerDied(playerNumber); // 2
+        }
+        life--;
     }
 
     public void PushBomb(Bomb bomb)
