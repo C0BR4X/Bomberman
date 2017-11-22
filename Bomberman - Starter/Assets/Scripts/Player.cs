@@ -39,6 +39,7 @@ public class Player : MonoBehaviour {
     public int explosionRange = 3; //Range of the bombs dropped by this player (maybe find better solution than public)
     private IUnityInput unityInput;
     public int life = 2; //Amount of life one player has (maybe find better solution than public)
+    public bool pushBomb = false;//Can Player push a bomb ? (maybe find better solution than public)
     
     //Prefabs
     public GameObject bombPrefab;
@@ -208,5 +209,12 @@ public class Player : MonoBehaviour {
         flag.GoHome();
         this.flag = null;
         GlobalManager.Scored(playerNumber);
+    }
+
+    public void PushBomb(Bomb bomb)
+    {
+        if (pushBomb = true)
+        {
+        }
     }
 }
