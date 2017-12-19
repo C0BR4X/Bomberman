@@ -19,7 +19,7 @@ public class Explosion : MonoBehaviour {
         if (other.CompareTag("Player"))
         {
             Player player = other.GetComponent<Player>();
-            player.gotHit();
+            player.GotHit();
         }
 
         if (other.CompareTag("Box"))

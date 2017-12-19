@@ -117,5 +117,9 @@ public class Bomb : MonoBehaviour
         this.player = player;
         this.explosionRange = range;
     }
+
+	public void Pushed()
+	{
+	}
 }
 

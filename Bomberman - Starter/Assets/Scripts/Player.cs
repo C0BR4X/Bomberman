@@ -187,7 +187,7 @@ public class Player : MonoBehaviour {
 
     
 
-    public void gotHit()
+    public void GotHit()
     {
         Debug.Log("P" + playerNumber + " hit by explosion!");
         if (life == 1)
@@ -199,10 +199,11 @@ public class Player : MonoBehaviour {
         life--;
     }
 
-    public void PushBomb(Bomb bomb)
+    public void PushBomb(Bomb bomb, Collider other)
     {
-        if (pushBomb = true)
+        if (pushBomb == true && other.CompareTag("Bomb"))
         {
+            bomb.Pushed();
         }
     }
 }
